@@ -55,7 +55,9 @@ function animatePress(currentColour){
   $(".btn").click(function(){
     currentColour = $(this).attr("id");
     $("#" + currentColour).addClass("pressed");
-    $("#" + currentColour).removeClass("pressed");
-  },100);
+    setTimeout(function() {
+        $("#" + currentColour).removeClass("pressed");
+    }, 100);
+  });
 }
 animatePress();
