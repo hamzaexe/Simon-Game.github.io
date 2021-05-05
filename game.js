@@ -7,7 +7,8 @@ $(".btn").click(function() {
   var userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
   playSound(userChosenColour);
-  nextSequence();
+  setTimeout(nextSequence, 1000);
+  checkAnswers(userClickedPattern.length-1);
 });
 
 function playSound(name) {
@@ -20,7 +21,6 @@ function nextSequence() {
   gamePattern.push(randomChosenColour);
   $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
   playSound(randomChosenColour);
-
   $("h1").text("level"+" "+level);
   level+=1;
 }
@@ -46,3 +46,12 @@ $(document).on('keypress',function(e) {
 
     }
 });
+function checkAnswers(currentLevel){
+  console.log("checkanswers function worked" + userClickedPattern[currentLevel]);
+  if (userClickedPattern[currentLevel]==gamePattern[currentLevel]) {
+    console.log("success");
+  }
+  else {
+    console.log("not success");
+  }
+}
